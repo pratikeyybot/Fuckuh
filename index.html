@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fun Website</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        transition: 0.5s;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    input, button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .male {
+        background: linear-gradient(135deg, #0d47a1, #42a5f5);
+        color: white;
+    }
+
+    .female {
+        background: linear-gradient(135deg, #ffe4ec, #ffb6c1);
+        color: #d63384;
+    }
+
+    h1 {
+        font-size: 42px;
+        letter-spacing: 2px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="step1">
+        <h2>Enter your Name and Age</h2>
+        <input type="text" id="name" placeholder="Your Name"><br>
+        <input type="number" id="age" placeholder="Your Age"><br>
+        <button onclick="nextStep()">Enter</button>
+    </div>
+
+    <div id="step2" class="hidden">
+        <h2>Are you Male or Female?</h2>
+        <button onclick="male()">Male</button>
+        <button onclick="female()">Female</button>
+    </div>
+
+    <div id="result" class="hidden">
+        <h1 id="message"></h1>
+    </div>
+
+</div>
+
+<script>
+function nextStep() {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+
+    if(name === "" || age === "") {
+        alert("Please enter both name and age!");
+        return;
+    }
+
+    document.getElementById("step1").classList.add("hidden");
+    document.getElementById("step2").classList.remove("hidden");
+}
+
+function male() {
+    document.body.className = "male";
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("message").innerText = "Laude ho tum tede wale 🖕🏻";
+}
+
+function female() {
+    document.body.className = "female";
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("message").innerText = "Pookie 🎀💗";
+}
+</script>
+
+</body>
+</html>
